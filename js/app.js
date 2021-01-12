@@ -87,6 +87,7 @@ function manageClick(event){
     sectionElement.removeEventListener('click', manageClick);
 
     updateVotes();
+    renderChart();
     makeHeaderRow();
     renderTable();
 
@@ -103,7 +104,54 @@ function updateVotes(){
     productShown[i] += ProductImages.allProducts[i].imageTimesShown;
   }
 }
+function renderChart(){
+  var sectionElement = document.getElementById('chart');
+  var titleElement = document.createElement('h2');
+  titleElement.textContent = 'Number of votes and displays per product';
+  sectionElement.appendChild(titleElement);
 
+  var canvasElement = document.createElement('canvas');
+  canvasElement.id = 'product-vote-chart';
+  canvasElement.height = '300';
+  canvasElement.width = '600';
+  sectionElement.appendChild(canvasElement);
+
+  var context = document.getElementById('product-vote-chart').getContext('2d');
+
+
+  var voteChartData = {
+    label: 'Votes per Product (cumulative)',
+    data: productVotes,
+    backgroundColor: '#404040',
+  };
+
+  var shownChartData = {
+    label: 'Times shown per product (cumulative)',
+    data: productShown,
+    backgroundColor: '#0040ff',
+  };
+
+  var productInfo = {
+    labels: productNames,
+    datasets:[voteChartData,shownChartData]
+  };
+
+  var chartOptions = {
+    scales: {
+      yAxes:[{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  };
+
+  var productResultsChart = new Chart(context, {
+    type:'bar',
+    data: productInfo,
+    options: chartOptions,
+  });
+}
 
 
 function renderTable(){
