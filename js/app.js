@@ -91,6 +91,9 @@ function manageClick(event){
     makeHeaderRow();
     renderTable();
 
+    localStorage.setItem('totalProductVotes',JSON.stringify(productVotes));
+    localStorage.setItem('totalProductShowns',JSON.stringify(productShown));
+
  
   } else {
 
@@ -253,6 +256,10 @@ new ProductImages('usb', 'img/usb.gif');
 new ProductImages('water-can', 'img/water-can.jpg');
 new ProductImages('wine-glass', 'img/wine-glass.jpg');
 
+if(localStorage.totalProductShowns){
+  productVotes = JSON.parse(localStorage.getItem('totalProductVotes'));
+  productShown = JSON.parse(localStorage.getItem('totalProductShowns'));
+}
 
 sectionElement.addEventListener('click', manageClick);
 results.addEventListener('click', manageClick); 
