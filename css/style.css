@@ -92,3 +92,42 @@
     float: left;
     width: 50%;
   }
+  #chart{
+    margin: 30px;
+    font-size: 14px;
+  }
+  canvas{
+    background: white;
+  }
+  table.product-data {
+    empty-cells: hide;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 100%;
+    border-collapse: separate;
+    margin: 30px;
+  
+  }
+  
+  td,tr {
+    padding: 15px;
+    margin: 10px;
+    border: .1px solid rgb(31, 27, 60);
+  }
+  
+  tr{
+    background: white;
+    color: grey;
+  }
+  
+  r td:first-child{
+    background:grey;
+    color: white;
+  }
+  
+  th {
+    background-color: white;
+    color: rgb(31, 27, 60);
+    border: 1px solid slategray;
+    padding: 10px;
+    margin: 5px;
+  }
